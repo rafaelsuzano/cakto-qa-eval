@@ -23,14 +23,14 @@ pnpm install
 pnpm start
 ```
 
-A API também está disponível em: `https://url`
+A API também está disponível em: `https://cakto-qa-eval.fly.dev`
 
 ### 📮 Coleção do Postman
 Para facilitar seus testes, incluímos uma coleção completa do Postman com todos os endpoints e casos de teste:
 
 1. **Importe a coleção:** `postman_collection.json` (arquivo incluído no repositório)
 2. **No Postman:** File > Import > Upload Files > Selecione `postman_collection.json`
-3. **Configure a variável:** Verifique se a variável `base_url` está definida para o local correto caso esteja rodando localmente, como `http://localhost:3000`.
+3. **Configure a variável:** Verifique se a variável `base_url` está definida para o local correto caso esteja rodando localmente, como `http://localhost:3000` ou `https://cakto-qa-eval.fly.dev` caso esteja utilizando a API em Cloud.
 
 A coleção inclui:
 - ✅ Todos os endpoints CRUD
@@ -115,9 +115,9 @@ A coleção inclui:
 - **IMPORTANTE:** Deixe o repositório público
 
 ### Passo 2: Análise e Testes Manuais
-Crie uma série de casos de teste manuais que cubram:
+Crie uma série de casos de teste manuais que cubram alguns casos de teste:
 
-#### ✅ Casos de Teste Obrigatórios:
+#### ✅ Casos de Teste disponíveis:
 1. **CRUD Básico**
    - Criar usuário com dados válidos
    - Listar usuários com paginação
