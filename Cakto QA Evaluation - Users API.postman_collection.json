@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "9900f6e6-2037-407f-bd93-b8c68df5884b",
+		"name": "Cakto QA Evaluation - Users API",
+		"description": "Coleção para testar a API de usuários com bugs intencionais para avaliação de QA Engineers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29216332"
+	},
+	"item": [
+		{
+			"name": "🏠 API Info & Health",
+			"item": [
+				{
+					"name": "API Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "👥 Users CRUD - Happy Path",
+			"item": [
+				{
+					"name": "Get All Users (Basic)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users (With Pagination)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?page=1&limit=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID (Valid)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User (Valid Data)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Teste QA\",\n  \"email\": \"teste@qa.com\",\n  \"age\": 30,\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User (Valid Data)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Teste QA Atualizado\",\n  \"age\": 31\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🔍 Users - Filtering & Search",
+			"item": [
+				{
+					"name": "Filter by Status - Active",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?status=active",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by Status - Inactive",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?status=inactive",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "inactive"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?search=João",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "João"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?search=maria@email.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "maria@email.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "⚡ Performance Tests",
+			"item": [
+				{
+					"name": "Memory Leak Test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/memory-leak",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"memory-leak"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Slow Endpoint (5s delay)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/slow-endpoint",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"slow-endpoint"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Slow Endpoint (Custom delay)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/slow-endpoint?delay=2000",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"slow-endpoint"
+							],
+							"query": [
+								{
+									"key": "delay",
+									"value": "2000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🔄 Consistency Tests",
+			"item": [
+				{
+					"name": "Get User by ID - Consistency Test (Execute várias vezes)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/999999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"999999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users List - Response Format Test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?page=1&limit=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - Status Code Test",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Teste Consistência\",\n  \"email\": \"consistencia{{$randomInt}}@test.com\",\n  \"age\": 28,\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User - Response Test",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Execute estes testes múltiplas vezes para identificar inconsistências"
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
