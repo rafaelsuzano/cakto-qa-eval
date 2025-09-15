@@ -23,14 +23,14 @@ pnpm install
 pnpm start
 ```
 
-A API também está disponível em: `https://cakto-qa-eval.fly.dev`
+A API também está disponível em: `https://cakto-qa-eval.launchify.com.br`
 
 ### 📮 Coleção do Postman
 Para facilitar seus testes, incluímos uma coleção completa do Postman com todos os endpoints e casos de teste:
 
 1. **Importe a coleção:** `postman_collection.json` (arquivo incluído no repositório)
 2. **No Postman:** File > Import > Upload Files > Selecione `postman_collection.json`
-3. **Configure a variável:** Verifique se a variável `base_url` está definida para o local correto caso esteja rodando localmente, como `http://localhost:3000` ou `https://cakto-qa-eval.fly.dev` caso esteja utilizando a API em Cloud.
+3. **Configure a variável:** Verifique se a variável `base_url` está definida para o local correto caso esteja rodando localmente, como `http://localhost:3000` ou `https://cakto-qa-eval.launchify.com.br` caso esteja utilizando a API em Cloud.
 
 A coleção inclui:
 - ✅ Todos os endpoints CRUD
