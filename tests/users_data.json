@@ -1,0 +1,44 @@
+[
+  {
+    "Teste": "Criar usuário com dados válidos e status active",
+    "name": "Rafael_active",
+    "email": "Rafael_active@qa.com",
+    "age": 25,
+    "status": "active",
+    "expected_status_code": 201
+  },
+
+   {
+    "Teste": "Criar usuário com dados válidos e status inactive",
+    "name": "RAfael inactive",
+    "email": "Rafael_active@qa.com",
+    "age": 25,
+    "status": "active",
+    "expected_status_code": 200
+  },
+  {
+    "Teste": "Criar usuário com idade inválida",
+    "name": "Rafael_trinta",
+    "email": "Rafael_trinta@qa.com",
+    "age": "trinta",
+    "status": "active",
+    "expected_status_code": 400
+  },
+  { 
+    "Teste": "Criar usuário com status inválido",
+    "name": "Rafael_invalid_status",
+    "email": "Rafael_invalid_status@qa.com",
+    "age": 35,
+    "status": "invalid_status",
+    "expected_status_code": 409
+  },
+  { 
+    "Teste": "Criar usuário com status pending",
+    "name": "Rafael_invalid_status",
+    "email": "Rafael_pending@qa.com",
+    "age": 35,
+    "status": "pending",
+    "expected_status_code": 201
+  }
+  
+]

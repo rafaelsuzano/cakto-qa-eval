@@ -1,1 +1,4 @@
 python3 -m pytest -v  --disable-warnings  --html=report.html --self-contained-html
+pytest test_performance.py --benchmark-min-time=0.1
+tests % pytest test_performance.py --benchmark-min-rounds=10 --benchmark-storage=results.json --benchmark-histogram=report.html
+python3 -m pytest -v --disable-warnings --html=report.html --self-contained-html test_api.py
