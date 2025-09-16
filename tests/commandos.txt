@@ -1,0 +1,1 @@
+python3 -m pytest -v  --disable-warnings  --html=report.html --self-contained-html
