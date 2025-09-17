@@ -32,7 +32,7 @@ def test_data_put():
     return json.loads(Path('users_data_put.json').read_text())
 
 class TestAPI:
-
+    @pytest.mark.order(1)
     def test_get_all_users_pages(self, users_list):
         # Primeiro, faz a requisição para a página 1 (sem parâmetros de paginação explícitos)
         response = requests.get(f'{URL}/users', verify=False)
@@ -66,6 +66,8 @@ class TestAPI:
 
         print("Usuários encontrados e adicionados à lista:", users_list)
 
+    @pytest.mark.order(2)
+
     def test_get_user_by_id(self, users_list):
         ids_to_test = users_list + [9999, 'abc']
         print(f"IDs a serem testados: {ids_to_test}")
@@ -81,6 +83,8 @@ class TestAPI:
             else:
                 assert response.status_code == 400
 
+    
+    @pytest.mark.order(3)
     def test_Post_users_data_(self, test_data):
         for case in test_data:
             print(f"Executando teste com dados do arquivo: {case['Teste']}")
@@ -102,6 +106,7 @@ class TestAPI:
             elif response.status_code == 200:
                 print(response.json())
 
+    @pytest.mark.order(4)
     def test_delete_users_created(self, new_users_list):
         print(f"IDs de usuários a serem deletados: {new_users_list}")
         for user_id in new_users_list:
@@ -110,24 +115,9 @@ class TestAPI:
             assert response.status_code == 200
             print(f"Usuário com ID {user_id} deletado com sucesso.")
         
-    @pytest.mark.parametrize("status", filters_status)
-    def test_filter_users(self, status):
-      
-        print(f"Testando filtro de status: {status}")
-        response = requests.get(f'{URL}/users?status={status}', verify=False)
-        print(f"Resposta: {response.status_code} - {response.text}")
-        assert response.status_code == 200
-       
-
-    @pytest.mark.parametrize("name, httpcode",filters_email)
-    def test_filter_users_email(self, name,httpcode ):
-
-        print(f"Testando filtro de email: {name} HTTP code: {httpcode}")
-        response = requests.get(f'{URL}/users?search={name}', verify=False)
-        print(f"Resposta: {response.status_code} - {response.text}")
-        assert response.status_code == httpcode
     
-
+    
+    @pytest.mark.order(5)
     def test_Put_users_data_(self, test_data_put):
         for case in test_data_put:
             print(f"Executando teste com dados do arquivo: {case['Teste']}")
@@ -141,3 +131,23 @@ class TestAPI:
             print("----------------------------------------------------------------------------------------------------------------------")
             response = requests.put(f'{URL}/users/1', json=payload, verify=False)
             print(f"Resposta: {response.status_code} - {response.text}")
+    
+    @pytest.mark.order(6)
+    @pytest.mark.parametrize("status", filters_status)
+    def test_filter_users(self, status):
+      
+        print(f"Testando filtro de status: {status}")
+        response = requests.get(f'{URL}/users?status={status}', verify=False)
+        print(f"Resposta: {response.status_code} - {response.text}")
+        assert response.status_code == 200
+       
+
+    @pytest.mark.order(7)
+    @pytest.mark.parametrize("name, httpcode",filters_email)
+    def test_filter_users_email(self, name,httpcode ):
+
+        print(f"Testando filtro de email: {name} HTTP code: {httpcode}")
+        response = requests.get(f'{URL}/users?search={name}', verify=False)
+        print(f"Resposta: {response.status_code} - {response.text}")
+        assert response.status_code == httpcode
+    

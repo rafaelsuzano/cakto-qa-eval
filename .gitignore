@@ -1,2 +1,7 @@
 node_modules
 .env
+report.html
+/__pycache__/*.*
+/.benchmarks/*.*
+/.pytest_cache/*.*
+__pycache__/test_performance.cpython-313-pytest-8.4.2.pyc
